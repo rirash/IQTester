@@ -1,0 +1,73 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MainWindowViewModel.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Width="500" Height="300"
+        x:Class="IQ_MOTIVATION_TEST.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Регистрация">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="Button.btn /template/ ContentPresenter">
+			<Setter Property="CornerRadius" Value="10" />
+		</Style>
+		
+		<Style Selector="Button.btn">
+			<Setter Property="Foreground" Value="#ffffff" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Background" Value="#662E1C" />
+			<Setter Property="BorderBrush" Value="#EBDCB2" />
+		</Style>
+		
+		<Style Selector="Button:pointerover.btn /template/ ContentPresenter">
+			<Setter Property="BorderBrush" Value="#AF4425" />
+			<Setter Property="Background" Value="#AF4425" />
+		</Style>
+
+		<Style Selector="Grid">
+			<Setter Property="Background" Value="#EBDCB2" />
+		</Style>
+		
+		<Style Selector="Menu">
+			<Setter Property="Background" Value="#C9A66B" />
+		</Style>
+
+		<Style Selector="MenuItem">
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="Background" Value="#C9A66B" />
+		</Style>
+
+		<Style Selector="Label.min">
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<Style Selector="TextBlock">
+			<Setter Property="FontSize" Value="12"/>
+		</Style>		
+	</Window.Styles>
+
+	<Grid Margin="0,0,0,0" >
+		<Menu VerticalAlignment="Top" Height="20">
+			<MenuItem Header="Помощь" FontSize="12"/>
+		</Menu>
+		
+		<Label Content="Добро пожаловать!"  FontSize="17" Margin="170,25,0,0"/>
+		
+		<Label Content="               Введите&#10;идентификационный номер:"  Classes="min" Margin="60,80,0,0" />
+		<TextBox Margin="170,90,0,200" FontSize="12"  Width="150" Watermark="Введите номер..." Text="{Binding getSetIdentNumber}" Foreground="{Binding getSetColorTextBox}" />
+
+		<Label Content="Выберите тестирование:"  Classes="min" Margin="30,160,0,0" />
+		<ComboBox Margin="200,155,0,0" Width="260" DataContext="{Binding getSetNumberTest}">
+			<TextBlock  >Интеллектуальные характеристики</TextBlock>
+			<TextBlock  >Мотивация действий</TextBlock>
+		</ComboBox>
+		
+		<Button Content="Начать тестирование" Margin="180,210,0,0" Classes="btn" Command="{Binding startProgram}"/>
+	</Grid>
+
+</Window>
